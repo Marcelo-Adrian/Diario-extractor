@@ -7,9 +7,9 @@ def analyse_licitacoes(file_path):
     data=[]
     try:
         with open(file_path, 'r', encoding='latin1') as file:
-            csv_reader = csv.reader(file, delimiter=';')
+            csv_reader = csv.DictReader(file, delimiter=';')
             for line in csv_reader:
-                if line[13] == "BRASILIA":
+                if line['Município'] == "BRASILIA" and line['Modalidade Compra'] == "Pregão - Registro de Preço" :
                     data.append(line)
     except FileNotFoundError:
         print("The file does not exist.")
